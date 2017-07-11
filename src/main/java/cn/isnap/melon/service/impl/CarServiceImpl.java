@@ -6,6 +6,7 @@ import cn.isnap.melon.service.ICarService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.*;
 
 /**
  * @author XIAOXIN
@@ -15,6 +16,28 @@ import javax.annotation.Resource;
 public class CarServiceImpl implements ICarService {
     @Resource
     public CarBrandMapper carBrandMapper = null;
+
+    @Override
+    public Map<String, List<Map>> getCarBrands() {
+        Map<String, List<Map>> result = new HashMap<>();
+        List brands = carBrandMapper.getAllBrands();
+        for (Object obj :
+                brands) {
+            Map dict = (Map)obj;
+            String pinyin = dict.get("pinyin").toString();
+            dict.remove("pinyin");
+
+            if (result.containsKey(pinyin)) {
+                result.get(pinyin).add(dict);
+            }
+            else {
+                List list = new ArrayList();
+                list.add(dict);
+                result.put(pinyin, list);
+            }
+        }
+        return result;
+    }
 
     public String getDefaultId() {
         CarBrand brand = carBrandMapper.selectByPrimaryKey((short) 100);

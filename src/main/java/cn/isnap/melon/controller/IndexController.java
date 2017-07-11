@@ -3,15 +3,13 @@ package cn.isnap.melon.controller;
 import cn.isnap.melon.service.ICarService;
 import org.apache.log4j.ConsoleAppender;
 import org.apache.log4j.Logger;
-import org.apache.log4j.PatternLayout;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Map;
 
 /**
  * Created by XIAOXIN on 2017/6/13.
@@ -31,16 +29,13 @@ public class IndexController {
 
     @ResponseBody
     @RequestMapping(value = "/query", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
-    public List<String> test() {
-        String id = carService.getDefaultId();
-        List list = new ArrayList();
-        list.add(id);
-        list.add("123123");
+    public Map test() {
+        Map brands = carService.getCarBrands();
 
         ConsoleAppender appender = new ConsoleAppender();
         logger.addAppender(appender);
-        logger.debug(list);
+        logger.debug(brands);
 
-        return list;
+        return brands;
     }
 }

@@ -1,5 +1,8 @@
 package cn.isnap.melon.service;
 
+import java.util.List;
+import java.util.Map;
+
 /**
  * user service interface
  *
@@ -8,4 +11,5 @@ package cn.isnap.melon.service;
  */
 public interface ICarService {
     String getDefaultId();
+    Map<String, List<Map>> getCarBrands();
 }

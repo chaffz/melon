@@ -252,4 +252,9 @@
       last_updated_user = #{lastUpdatedUser,jdbcType=VARCHAR}
     where id = #{id,jdbcType=SMALLINT}
   </update>
+  <select id="getAllBrands" resultType="map">
+    SELECT
+      `id`, `title`, `pinyin`
+    FROM `car_brand`
+  </select>
 </mapper>

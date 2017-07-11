@@ -41,7 +41,7 @@
 
         <!-- !!!! Table Configurations !!!! -->
         <table tableName="car_type" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
-                                                     enableUpdateByExample="false"/>
+               enableUpdateByExample="false"/>
         <table tableName="car_brand" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
                enableUpdateByExample="false"/>
         <table tableName="car_series" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
